@@ -2,7 +2,7 @@ package list;
 
 import exception.ListOutofIndexException;
 
-public class List {
+public class SortedList {
 	
 	private int[] list;
 	
@@ -10,11 +10,11 @@ public class List {
 	
 	private int count = 0;
 	
-	public List() {
+	public SortedList() {
 		list = new int[capacity];
 	}
 	
-	public List(int capacity) {
+	public SortedList(int capacity) {
 		this.capacity = capacity;
 		this.list = new int[this.capacity];
 	}
@@ -47,6 +47,31 @@ public class List {
 		}
 		list[location] = value;
 		count++;
+	}
+	
+	public SortedList merge(SortedList lb) {
+		SortedList lc = new SortedList(this.length() + lb.length());
+		int laIndex = 0, lbIndex = 0 ;
+		int minLength = this.length() > lb.length() ? lb.length() : this.length();
+		for (; laIndex < minLength && lbIndex < minLength; ) {
+				if (this.get(laIndex) > lb.get(lbIndex)) {
+					lc.insert(lb.get(lbIndex));
+					lbIndex++;
+				} else {
+					lc.insert(this.get(laIndex));
+					laIndex++;
+				}
+		}
+		
+		while (laIndex < this.length()) {
+			lc.insert(this.get(laIndex++));
+		}
+		
+		while (lbIndex < lb.length()) {
+			lc.insert(lb.get(lbIndex++));
+		}
+		
+		return lc;
 	}
 	
 	public void clear() {
