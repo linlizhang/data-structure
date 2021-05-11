@@ -4,11 +4,11 @@ import java.util.List;
 
 public class TreeNode {
 
-    private int value;
+    protected int value;
 
-    private TreeNode left;
+    protected TreeNode left;
 
-    private TreeNode right;
+    protected TreeNode right;
 
     public TreeNode(int value) {
         this.value = value;
