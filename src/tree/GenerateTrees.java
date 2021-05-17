@@ -5,26 +5,36 @@ import java.util.List;
 
 public class GenerateTrees {
 
-    public static void main(String[] args) {
-        GenerateTrees generateTrees = new GenerateTrees();
-        List<TreeNode> trees = generateTrees.generateTrees(3);
-        System.out.println(trees);
+	public static void main(String[] args) {
+		GenerateTrees generateTrees = new GenerateTrees();
+		List<TreeNode> trees = generateTrees.generateTrees(3);
+		System.out.println(trees);
 
-    }
+	}
 
-    public List<TreeNode> generateTrees(int n) {
-        List<TreeNode> trees = new LinkedList();
-        for (int i = 1; i <= n; i++) {
-            TreeNode root = new TreeNode(i);
-            generateTree(root, i, n);
-            //how to check the two trees are identical.
-//            if (!trees.contains(root)) {
-//                trees.add(root);
-//            }
-            trees.add(root);
-        }
-        return trees;
-    }
+	public List<TreeNode> generateTrees(int n) {
+		// elements are sorted
+		int[] elements = new int[n];
+		for (int i = 0; i < n; i++) {
+			elements[i] = i + 1;
+		}
+		List<TreeNode> trees = new LinkedList();
+		for (int i = 0; i < n; i++) {
+			for (int j = 0; j < n; j++) {
+				TreeNode root = new TreeNode(elements[i]);
+				generateTree(root, elements, j, n);
+				trees.add(root);
+			}
+		}
+		return trees;
+	}
+
+	private void generateTree(TreeNode root, int[] elements, int startIndex, int endIndex) {
+		for (int i = startIndex; i < endIndex; i++) {
+			TreeNode node = new TreeNode(elements[i]);
+			insertTreeNode(root,  node);
+		}
+	}
 
     private void generateTree(TreeNode root, int startIndex, int endIndex) {
         for (int i = 1; i < startIndex; i++) {
@@ -61,7 +71,4 @@ public class GenerateTrees {
         }
     }
 
-    private List<Integer> permutation(int startIndex, int endIndex) {
-       return null;
-    }
 }
