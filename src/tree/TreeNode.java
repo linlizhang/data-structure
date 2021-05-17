@@ -1,27 +1,25 @@
 package tree;
 
-import java.util.List;
-
 public class TreeNode {
 
-    protected int value;
+    protected int val;
 
     protected TreeNode left;
 
     protected TreeNode right;
 
-    public TreeNode(int value) {
-        this.value = value;
+    public TreeNode(int val) {
+        this.val = val;
     }
 
-    public TreeNode(TreeNode left, TreeNode right, int value) {
+    public TreeNode(TreeNode left, TreeNode right, int val) {
         this.left = left;
         this.right = right;
-        this.value = value;
+        this.val = val;
     }
 
-    public int getValue() {
-        return value;
+    public int getVal() {
+        return val;
     }
 
     public TreeNode getLeft() {

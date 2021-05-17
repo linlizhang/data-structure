@@ -1,5 +1,7 @@
 package tree;
 
+import java.util.List;
+
 public class BinaryTreeDemo {
 
     public static void main(String[] args) {
@@ -9,6 +11,12 @@ public class BinaryTreeDemo {
             tree.add(values[i]);
         }
 
-        System.out.println(tree);
+//        List<List<Integer>> levelValues = tree.levelOrder();
+//
+//        System.out.println(levelValues);
+
+        int[] nums = {0,1,2, 3, 4, 5};
+        TreeNode root = tree.sortedArrayToBST(nums);
+        System.out.println(root);
     }
 }

@@ -1,6 +1,5 @@
 package tree;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -43,21 +42,21 @@ public class GenerateTrees {
         if (root == null) {
             return;
         }
-        if (root.left == null && root.value >= node.value) {
+        if (root.left == null && root.val >= node.val) {
             root.left = node;
             return;
         }
 
-        if (root.right == null && root.value < node.value) {
+        if (root.right == null && root.val < node.val) {
             root.right = node;
             return;
         }
 
-        if (root.value > node.value) {
+        if (root.val > node.val) {
             insertTreeNode(root.left, node);
         }
 
-        if (root.value <= node.value) {
+        if (root.val <= node.val) {
             insertTreeNode(root.right, node);
         }
     }
