@@ -5,7 +5,9 @@ import java.util.List;
 
 public class BinaryTree {
 
-    public List<Integer> inOrderTraversal(TreeNode root) {
+    TreeNode root;
+
+    public List<Integer> inOrderTraversal() {
         List<Integer> list = new LinkedList<>();
         inOrderTraversal(root, list);
         return list;
@@ -23,5 +25,25 @@ public class BinaryTree {
         if (node.getRight() != null) {
             inOrderTraversal(node.getRight(), list);
         }
+    }
+
+    public void add(int value) {
+        root = add(root, value);
+    }
+
+    private TreeNode add(TreeNode current, int value) {
+        if (current == null) {
+            return new TreeNode(value);
+        }
+
+        if (value < current.value) {
+            current.left = add(current.left, value);
+        } else if (value > current.value) {
+            current.right = add(current.right, value);
+        } else {
+            return current;
+        }
+
+        return current;
     }
 }
